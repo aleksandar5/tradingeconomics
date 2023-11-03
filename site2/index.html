@@ -2,9 +2,9 @@
 <head>
   <meta charset="UTF-8">
   <title>Export/Import by Countries</title>	
-    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
-    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-	<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+  <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+  <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
   <style>
     body {
       background-color: #fff;
@@ -41,11 +41,10 @@
       margin: auto;
     }
 	
-		#table_div{
-	  margin: auto;
-  width: 60%;
-	
-	}
+    #table_div{
+      margin: auto;
+      width: 60%;	
+    }
   </style>
   <script>  
     "use strict";
@@ -56,24 +55,22 @@
 	  minimumSignificantDigits: 1
     });
 	
-	let currentCountry='';  
+    let currentCountry='';  
     let nameOfSelectedCountry='';   
 	
     function firstUpperCaseLetter(str) { //First upper case letter for name of country
       return str.charAt(0).toUpperCase() + str.slice(1);
     }
 	
-    function showCountry(country){ //central part of script, show table with data
-	   // alert(country)
-	  const trade=parseInt(document.getElementById("expImp").value);		//export or import are selected...
-      document.getElementById("expImp").disabled = false;
-     
+    function showCountry(country){ //central part of script, show table with data	   
+      const trade=parseInt(document.getElementById("expImp").value);		//export or import are selected...
+      document.getElementById("expImp").disabled = false;     
       const countryName=firstUpperCaseLetter(nameOfSelectedCountry); 
-	  const title=document.getElementById("economy");   
+      const title=document.getElementById("economy");   
       const a={... country};
       let b;	
       trade==0 ? title.textContent="Export from " + countryName: title.textContent="Import in " + countryName ;	
-	  trade==0 ?  b=a[0]:  b=a[1] ;	  
+      trade==0 ?  b=a[0]:  b=a[1] ;	  
   
       let max=0;  
       for (let i = 0; i < b.length; i++) { if(b[i].value>max){max=b[i].value;}}
@@ -83,13 +80,13 @@
 	  columns: [	
         { title: 'Country' ,data: 'country2'},
         { title: 'Value' , data: 'value'}, 			
-	    { title: 'Symbol' , data: 'symbol'},
+	{ title: 'Symbol' , data: 'symbol'},
         { title: 'URL', data: 'url' ,"fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {$(nTd).html("<a href='https://tradingeconomics.com"+oData.url+"' target='_blank'  >"+oData.url+"</a>");}},
       ],
 	  searching: false,
 	  destroy: true,
 	  dom: 'lpftrip',
-      data: b,	   
+          data: b,	   
 	  columnDefs:[{render: (data, type, row) =>  formatter.format(data)  , targets: 1, className: 'dt-body-right'}]  
 	})   
   }	
@@ -119,7 +116,7 @@
       const option=document.createElement("option");
       option.value=country_list[key].name
       option.text=country_list[key].name      
-	  document.getElementById("countries").add(option, null);
+      document.getElementById("countries").add(option, null);
       })
     });	  
 </script>	
