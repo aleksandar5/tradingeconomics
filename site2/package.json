@@ -4,10 +4,10 @@
   "description": "",
   "main": "index.js",
   "engines": {"node": "18.x"},
- "scripts": {   
+  "scripts": {   
     "start": "node index.js"
-  },
-   "dependencies": {   
+     },
+  "dependencies": {   
     "express": "latest",
     "cors": "latest",
     "tradingeconomics": "latest"
