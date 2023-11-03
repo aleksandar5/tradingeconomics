@@ -34,11 +34,10 @@
       left: 50%;
     }
 	
-	#table_div{
-	  margin: auto;
-  width: 70%;
-	
-	}
+    #table_div{
+      margin: auto;
+      width: 70%;	
+    }
 		
     div select {
       display: block;
@@ -52,8 +51,8 @@
     let response = await fetch("https://brains.tradingeconomics.com/v2/search/wb,fred,comtrade?q=" +  country.toLowerCase() + "&pp=50&p=0&_=1557934352427&stance=2");
     response = await response.json();
     const dataSet=[];
-	let counter=0;   
-	$.each(response, function (key, value) {	
+    let counter=0;   
+    $.each(response, function (key, value) {	
 	  dataSet.push(value)		 
      });	 
 	 showData(dataSet) 
@@ -61,17 +60,17 @@
 
   function showData(dataSet1){
     $('#table_data').DataTable({
-	  columns: [	
+     columns: [	
         { title: 'Category' ,data: 'category'},
         { title: 'Currency' , data: 'currency'},
-		{ title: 'Name' , data: 'name'},
-		{ title: 'Importance' ,data: 'importance'},
-		{ title: 'URL', data: 'url' ,"fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {$(nTd).html("<a href='https://tradingeconomics.com"+oData.url+"' target='_blank'  >"+oData.url+"</a>");}}
-    ],
+	{ title: 'Name' , data: 'name'},
+	{ title: 'Importance' ,data: 'importance'},
+	{ title: 'URL', data: 'url' ,"fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {$(nTd).html("<a href='https://tradingeconomics.com"+oData.url+"' target='_blank'  >"+oData.url+"</a>");}}
+        ],
 	searching: false,
 	destroy: true,
 	dom: 'lpftrip',
-    data: dataSet1[1]	
+        data: dataSet1[1]	
 	})
   }	
 
